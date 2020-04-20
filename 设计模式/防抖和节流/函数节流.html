@@ -1,0 +1,52 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-23 15:07:58
+ * @LastEditTime: 2020-03-23 20:22:40
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RW 笔记\设计模式\防抖和节流\函数防抖和节流.html
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <div id="box"
+    style="background-color: rebeccapurple;height: 1000px;width: 100%;text-align: center;line-height: 500px;"></div>
+
+  <script>
+    // 持续触发不执行
+    // 到一定时间再去执行
+
+    var box = document.querySelector("#box")
+
+    //封装一下
+    function throttle(func, delay) {
+      let run = true
+      return function () {
+        if (!run) {
+          return // 如果开关关闭了，那就直接不执行下边的代码
+        }
+        run = false // 持续触发的话，run一直是false，就会停在上边的判断那里
+        setTimeout(() => {
+          func.apply(this, arguments)
+          run = true // 定时器到时间之后，会把开关打开，我们的函数就会被执行
+        }, delay)
+      }
+    }
+    //调用
+    box.onmousemove = throttle(function (e) {
+      box.innerHTML = `${e.clientX}, ${e.clientY}`
+    }, 500)
+  </script>
+</body>
+
+</html>

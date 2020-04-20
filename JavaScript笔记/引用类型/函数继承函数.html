@@ -1,0 +1,56 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-02 13:05:27
+ * @LastEditTime: 2020-03-03 16:45:40
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit~
+ * @FilePath: \RW 笔记\JavaScript笔记\引用类型\test.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a href="https://segmentfault.com/q/1010000002871502">来源</a>
+
+  <script>
+   function Father(){
+  //  console.log('father');
+   }
+  //  console.dir(Father.constructor) //函数 Function(){....}
+  //  console.dir(Father.prototype.constructor) //函数Father(){}
+   //接上一行: 因为Father的实例的__proto__=Father(){}的prototype
+  //  console.dir(new Father().__proto__)
+   
+   function Sub(){
+  //  console.log('sub');
+   }
+   Sub.prototype = Object.create(Father.prototype); //指向一个对象,这个对象的__proto__ = Father.prototype
+   //并没有修改Sub.prototype.constructor
+   //Sub.prototype.constructor = Sub;
+  //  console.dir(Sub.prototype.__proto__==Father.prototype) //Father
+
+
+
+
+   var sub = new Sub();
+   console.dir(sub); //Father
+
+   console.dir( Sub.prototype); //Object { }
+  //  console.log(Sub.prototype === Father); //false
+  //  console.log(Sub.prototype === Father.prototype); //false
+  //  console.log(Sub.prototype.__proto__ === Father.prototype); //true
+
+  //  //下面两行说明JavaScript对对象所属的“类”的判断并不依赖于constructor属性
+  //  console.log(sub instanceof Sub); //true
+  //  console.log(sub instanceof Father); //true
+  //  console.log(sub instanceof Object); //true
+  </script>
+</body>
+
+</html>

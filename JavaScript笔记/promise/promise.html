@@ -1,0 +1,133 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-09 12:11:39
+ * @LastEditTime: 2020-03-09 12:13:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RW 笔记\JavaScript笔记\promise\promise.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Promise(executor) {
+      var _this = this;
+      this.data = undefined; //数据
+      this.status = "pending"; //状态
+
+      this.onResolvedCallback = [] // Promise resolve时的回调函数集，因为在Promise结束之前有可能有多个回调添加到它上面
+      this.onRejectedCallback = [] // Promise reject时的回调函数集，因为在Promise结束之前有可能有多个回调添加到它上面
+
+      var resolve = function (data) {
+        if (_this.status === "pending") {
+          _this.status = "resolved";
+          _this.data = data;
+          for (var i = 0; i < _this.onResolvedCallback.length; i++) {
+            _this.onResolvedCallback[i](data)
+          }
+        }
+      }
+      var reject = function (errReason) {
+        if (_this.status === "pending") {
+          _this.status = "rejected";
+          _this.data = errReason;
+          for (var i = 0; i < _this.onRejectedCallback.length; i++) {
+            _this.onRejectedCallback[i](errReason)
+          }
+        }
+      }
+      try {
+        executor(resolve, reject);
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    //onResolved onRejected 为调用者传进来的 成功和失败的回掉
+    Promise.prototype.then = function (onResolved, onRejected) {
+
+      var _this = this
+      var promise2;
+      // 根据标准，如果then的参数不是function，则我们需要忽略它，此处以如下方式处理
+      onResolved = typeof onResolved === 'function' ? onResolved : function (value) {}
+      onRejected = typeof onRejected === 'function' ? onRejected : function (reason) {}
+
+      //如果上面的executor是一个异步的，执行then的时候 status一定是pending
+      if (this.status === "pending") {
+        //生成一个新的promise
+        promise2 = new Promise(function (resolve, reject) {
+          //将调用者的回调包装后注册进promise的回调队列
+          _this.onResolvedCallback.push(function (value) {
+            //这里的value是在onResolvedCallback里面的函数执行时传的
+            try {
+              var x = onResolved(_this.data)
+              if (x instanceof Promise) {
+                //then里面的回调如果是异步的promise，则等待异步执行完后，再进入promise2的then中注册的回调
+                x.then(resolve, reject);
+              } else {
+                //如果是同步的，直接进入promise2的then中注册的回调
+                resolve(x);
+              }
+            } catch (e) {
+              reject(e)
+            }
+          });
+
+          _this.onRejectedCallback.push(function (reason) {
+            try {
+              var x = onRejected(_this.data)
+              if (x instanceof Promise) {
+                x.then(resolve, reject);
+              } else {
+                reject(x);
+              }
+            } catch (e) {
+              reject(e)
+            }
+          });
+        })
+        return promise2;
+      }
+
+      //如果executor是同步的， 则执行then的时候 status为 resolved或者rejected
+      if (_this.status === 'resolved') {
+        // 如果promise1(此处即为this/_this)的状态已经确定并且是resolved，我们调用onResolved
+        // 因为考虑到有可能throw，所以我们将其包在try/catch块里
+        return promise2 = new Promise(function (resolve, reject) {
+          try {
+            var x = onResolved(_this.data)
+            if (x instanceof Promise) { // 如果onResolved的返回值是一个Promise对象，直接取它的结果做为promise2的结果
+              x.then(resolve, reject)
+            }
+            resolve(x) // 否则，以它的返回值做为promise2的结果
+          } catch (e) {
+            reject(e) // 如果出错，以捕获到的错误做为promise2的结果
+          }
+        })
+      }
+
+      // 此处与前一个if块的逻辑几乎相同，区别在于所调用的是onRejected函数，就不再做过多解释
+      if (_this.status === 'rejected') {
+        return promise2 = new Promise(function (resolve, reject) {
+          try {
+            var x = onRejected(_this.data)
+            if (x instanceof Promise) {
+              x.then(resolve, reject)
+            }
+          } catch (e) {
+            reject(e)
+          }
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>

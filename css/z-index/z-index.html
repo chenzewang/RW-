@@ -1,0 +1,63 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-24 14:53:28
+ * @LastEditTime: 2020-02-24 15:01:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RW 笔记\css\z-index\z-index.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div> <span class="red">1111</span> </div>
+  <div> <span class="green">2222</span> </div>
+  <div> <span class="blue">3333</span> </div>
+
+  <style>
+div:first-child {
+opacity: .99;
+}
+
+   .red, .green, .blue {
+   /* position: absolute; */
+   width: 100px;
+   color: white;
+   line-height: 100px;
+   text-align: center;
+   }
+
+   .red {
+   position: absolute;
+
+   z-index: 1;
+   top: 20px;
+   left: 20px;
+   background: red;
+   }
+
+   .green {
+   position: absolute;
+
+   top: 60px;
+   left: 60px;
+   background: green;
+   }
+
+   .blue {
+   top: 100px;
+   left: 100px;
+   background: blue;
+   }
+  </style>
+
+
+</body>
+
+</html>

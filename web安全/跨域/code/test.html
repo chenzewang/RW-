@@ -1,0 +1,108 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-19 19:43:09
+ * @LastEditTime: 2020-03-24 00:46:58
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RW 笔记\web安全\xss\例子\test.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button type="button" id="test1">不跨域请求</button>
+  <button type="button" id="test2">跨域简单请求</button>
+
+  <button type="button" id="test3">跨域复杂请求</button>
+  <button type="button" id="test4">跨域复杂请求，带cookie</button>
+  <!-- <button type="button" id="test">测试</button> -->
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    var test1 = document.querySelector('#test1')
+    //不跨域请求
+    test1.addEventListener('click', function () {
+      var url = `/test1`
+      $.ajax({
+        url: url,
+        type: "get",
+        data: {
+          test: 'test1'
+        },
+        success(res) {
+          var modal = `<div>不跨域请求成功:${res}</div>`
+          $("body").append(modal) //htmlEscape()对字符进行转义，js不会被执行，而是作为字符串
+        }
+      })
+    }, false)
+
+
+    //跨域简单请求
+    var test2 = document.querySelector('#test2')
+    test2.addEventListener('click', function () {
+      var url = `http://localhost:3333/test2`
+      $.ajax({
+        url: url,
+        type: "post",
+        data: {
+          test: "test2"
+        },
+        success(res) {
+          var modal = `<div>跨域简单请求成功:${res}</div>`
+          $("body").append(modal) //htmlEscape()对字符进行转义，js不会被执行，而是作为字符串
+        }
+      })
+    }, false)
+
+
+    // 跨域复杂请求
+    var test3 = document.querySelector('#test3')
+    test3.addEventListener('click', function () {
+      var url = `http://localhost:3333/test3`
+      $.ajax({
+        url: url,
+        type: "post",
+        headers: {
+          "content-type": "application/json" //设置这个后，就不是简单跨域请求了
+        },
+        data: {
+          test: "test3"
+        },
+        success(res) {
+          var modal = `<div>跨域复杂请求成功:${res}</div>`
+          $("body").append(modal) //htmlEscape()对字符进行转义，js不会被执行，而是作为字符串
+        }
+      })
+    }, false)
+
+    // 带cookie的跨域请求
+    var test4 = document.querySelector('#test4')
+    test4.addEventListener('click', function () {
+      var url = `http://localhost:3333/test4`
+      $.ajax({
+        url: url,
+        type: "post",
+        headers: {
+          "content-type": "application/json" //设置这个后，就不是简单跨域请求了
+        },
+        xhrFields: {
+          withCredentials: true // 前端设置是否带cookie
+        },
+        data: {
+          test: "test4"
+        },
+        success(res) {
+          var modal = `<div>带cookie的跨域请求成功:${res}</div>`
+          $("body").append(modal) //htmlEscape()对字符进行转义，js不会被执行，而是作为字符串
+        }
+      })
+    }, false)
+  </script>
+</body>
+
+</html>

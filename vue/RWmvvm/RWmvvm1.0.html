@@ -1,0 +1,120 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-23 09:28:54
+ * @LastEditTime: 2020-03-23 12:39:17
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RW 笔记\vue\RWmvvm\RWmvvm1.0.html
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>数据双向绑定</h1>
+    <div>
+      <div v-text="name"></div>
+      <input type="text" v-model="name">
+    </div>
+  </div>
+  <script>
+    class Vue {
+      constructor(options) {
+        this.options = options
+        this.$data = options.data
+        this.$el = document.querySelector(options.el)
+        this._directives = {};
+        Observer(this.$data, this) //数据劫持
+        Compile(this.$el, this) // 解析指令，收集依赖 生成watcher
+      }
+    }
+    class Watch {
+      constructor(el, vm, exp, attr) {
+        this.el = el
+        this.vm = vm
+        this.exp = exp
+        this.attr = attr
+        this.update()
+      }
+      update() {
+        this.el[this.attr] = this.vm.$data[this.exp]
+      }
+    }
+    const vm = new Vue({
+      data: {
+        name: "riwang"
+      },
+      el: "#app"
+    })
+    // var data = {
+    //   name: "riwang",
+    //   age: "18"
+    // }
+
+    // let _directives = {
+    //   // name: [fn1, fn2], //fn为该属性变化时要执行的操作
+    //   // age: [fn1, fn2]
+    // }
+
+    function Observer(data, vm) {
+      for (let key in data) {
+
+        vm._directives[key] = [] //依赖这个属性的依赖数组初始化
+        let val = data[key] //属性值
+        let _obj = vm._directives[key] //先给个引用，之后会在compile中添加
+        if (typeof data[key] === 'object') {
+          Observer(data[key])
+        }
+        Object.defineProperty(data, key, {
+          get: function () {
+            // 在这里收集依赖，主要是计算属性，render watcher(视图渲染render)
+            return val
+          },
+          set: function (newVal) {
+            if (val !== newVal) {
+              val = newVal
+              // 这里要检查并更新dom
+              _obj.forEach((item) => {
+                item.update()
+              })
+            }
+          }
+        })
+      }
+    }
+
+
+    function Compile(el, vm) {
+      debugger
+      let nodes = el.children;
+      [].forEach.call(nodes, node => {
+        if (node.children.length) { //还有子节点 递归遍历所有节点
+          Compile(node, vm)
+        }
+        if (node.hasAttribute('v-text')) {
+          let attrValue = node.getAttribute("v-text"); //指令所绑定的属性
+          vm._directives[attrValue].push(new Watch(node, vm, attrValue, "innerHTML")) //添加观察者
+        }
+        if (node.hasAttribute('v-model')) {
+          // let _this = vm
+          let attrValue = node.getAttribute("v-model");
+          vm._directives[attrValue].push(new Watch(node, vm, attrValue, "value")) //添加观察者
+
+          node.addEventListener('input', (function () {
+            return function () {
+              vm.$data[attrValue] = node.value //改变数据值时触发相应属性的setter
+            }
+          })())
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

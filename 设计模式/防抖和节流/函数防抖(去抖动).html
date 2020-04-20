@@ -1,0 +1,60 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-23 15:07:58
+ * @LastEditTime: 2020-03-26 09:57:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RW 笔记\设计模式\防抖和节流\函数防抖和节流.html
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <div id="box"
+    style="background-color: rebeccapurple;height: 1000px;width: 100%;text-align: center;line-height: 500px;"></div>
+
+  <script>
+    // 持续触发不执行
+    // 不触发的一段时间之后再执行
+
+    var box = document.querySelector("#box")
+
+
+    //直观想法：
+    // let timeout
+    // box.onmousemove = function (e) {
+    //   clearTimeout(timeout)
+    //   timeout = setTimeout(() => {
+    //     box.innerHTML = `${e.clientX}, ${e.clientY}`
+    //     console.log(1);
+    //   }, 500)
+    // }
+
+
+    //封装一下
+    function debounce(func, delay) {
+      let timeout
+      return function () {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+          func.apply(this, arguments) //这里要注意一下this的指向，不用箭头函数的时候，setTimeout的回调函数中的this指向window
+        }, delay)
+      }
+    }
+    //调用
+    box.onmousemove = debounce(function (e) {
+      box.innerHTML = `${e.clientX}, ${e.clientY}`
+    }, 500)
+  </script>
+</body>
+
+</html>

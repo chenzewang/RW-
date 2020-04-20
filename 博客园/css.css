@@ -1,0 +1,980 @@
+   /** MarkDown样式调整 */
+   .cnblogs-markdown .hljs {
+     font-size: 16px !important;
+     line-height: 2 !important;
+     padding: 15px !important;
+   }
+
+   .cnblogs-markdown code {
+     background: rgb(238, 240, 244) none !important;
+     border: 0px !important;
+     color: rgb(73, 59, 92) !important;
+     font-size: 16px !important;
+   }
+
+   .cnblogs-markdown h2 {
+     font-weight: 500;
+     margin: 20px 0;
+   }
+
+   .cnblogs-markdown h2:before {
+     content: "#";
+     color: rosybrown;
+     position: relative;
+     top: 0;
+     left: -12px;
+   }
+
+   #cnblogs_post_body p {
+     line-height: 1.8em
+   }
+
+   #cnblogs_post_body h2 {
+     font-weight: 500;
+     margin: 20px 0;
+   }
+
+   #cnblogs_post_body h3 {
+     font-size: 16px;
+     font-weight: bold;
+     line-height: 1.5;
+     margin: 10px 0;
+   }
+
+   .cnblogs-markdown h3:before {
+     content: "##";
+     color: #2175bc;
+     position: relative;
+     top: 0;
+     left: -8px;
+   }
+
+   .postBody blockquote,
+   .postCon blockquote {
+     background-image: none;
+     border-left: 5px solid #DDDFE4;
+     background-color: #EEF0F4;
+   }
+
+   /* 去除页面底部的广告*/
+   #ad_t2 {
+     display: none
+   }
+
+   /**---------- 原有样式修改 --------*/
+ 
+
+   #mainContent {
+     width: 720px;
+     box-shadow:0 0 0;
+     border-radius: 0px;
+     opacity: 0;
+     transition: 0.5s;
+     margin-top: 40px;
+   }
+
+   #main {
+     /* width: 50%; */
+     background-color: white;
+     /*max-width: 700px;*/
+   }
+
+   @media screen and (max-width: 1000px) {
+     #main {
+       /* width: 100%; */
+     }
+   }
+
+   body {
+     background-image: none;
+     background-color: white;
+     font-family: Menlo, Bitstream Vera Sans Mono, DejaVu Sans Mono, Monaco, Consolas, monospace !important;
+     line-height: 1.8;
+   }
+
+   #cnblogs_post_body {
+     font-size: 16px;
+   }
+
+   #green_channel {
+     display: none;
+   }
+
+   #post_next_prev {
+     display: none;
+   }
+
+   .forFlow img {
+     margin-top: 0;
+   }
+
+   #cnblogs_post_body img {
+     max-width: 100%;
+   }
+
+   /** 去除广告 */
+   #cb_post_title_url {
+     display: none;
+   }
+
+   #cnblogs_c1 {
+     display: none;
+   }
+
+   #cnblogs_c2 {
+     display: none;
+   }
+
+   #ad_t2 {
+     display: none;
+   }
+
+   #kb_block {
+     display: none
+   }
+
+   #under_post_news {
+     display: none
+   }
+
+   #header {
+     display: none
+   }
+
+   #BlogPostCategory {
+     display: none;
+   }
+
+   #comment_nav {
+     display: none;
+   }
+
+   .postDesc {
+     border-bottom: none;
+   }
+
+   #author_profile_follow {
+     display: none;
+   }
+
+   /** 自定义样式 */
+   /* 加载条 */
+   #myProgressBar {
+     width: 15%;
+     height: 2px;
+     background-color: rosybrown;
+     position: fixed;
+     top: 0;
+     left: 0;
+     z-index: 999;
+   }
+
+   #nprogress {
+     pointer-events: none;
+   }
+
+   #nprogress .bar {
+     background: rosybrown;
+
+     position: fixed;
+     z-index: 1031;
+     top: 0;
+     left: 0;
+
+     width: 100%;
+     height: 2px;
+   }
+
+   #nprogress .peg {
+     display: block;
+     position: absolute;
+     right: 0px;
+     width: 100px;
+     height: 100%;
+     box-shadow: 0 0 10px rosybrown, 0 0 5px rosybrown;
+     opacity: 1.0;
+
+     -webkit-transform: rotate(3deg) translate(0px, -4px);
+     -ms-transform: rotate(3deg) translate(0px, -4px);
+     transform: rotate(3deg) translate(0px, -4px);
+   }
+
+   #nprogress .spinner {
+     display: block;
+     position: fixed;
+     z-index: 1031;
+     top: 15px;
+     right: 15px;
+   }
+
+   #nprogress .spinner-icon {
+     width: 18px;
+     height: 18px;
+     box-sizing: border-box;
+
+     border: solid 2px transparent;
+     border-top-color: rosybrown;
+     border-left-color: rosybrown;
+     border-radius: 50%;
+
+     -webkit-animation: nprogress-spinner 400ms linear infinite;
+     animation: nprogress-spinner 400ms linear infinite;
+   }
+
+   .nprogress-custom-parent {
+     overflow: hidden;
+     position: relative;
+   }
+
+   .nprogress-custom-parent #nprogress .spinner,
+   .nprogress-custom-parent #nprogress .bar {
+     position: absolute;
+   }
+
+   @-webkit-keyframes nprogress-spinner {
+     0% {
+       -webkit-transform: rotate(0deg);
+     }
+
+     100% {
+       -webkit-transform: rotate(360deg);
+     }
+   }
+
+   @keyframes nprogress-spinner {
+     0% {
+       transform: rotate(0deg);
+     }
+
+     100% {
+       transform: rotate(360deg);
+     }
+   }
+
+
+   /** 导航栏 */
+   #mynavbar {
+     width: 100%;
+     height: 70px;
+     position: fixed;
+     display: block;
+     top: 0px;
+     z-index: 100;
+     background-color: white;
+     transition: 0.4s ease-in-out;
+     box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+   }
+
+   #mynavbar_menu {
+     display: inline-block;
+     width: auto;
+     position: relative;
+     float: right;
+     text-align: right;
+     line-height: 68px;
+   }
+
+   #mynavbar_menu a {
+     padding: 0 15px;
+     font-size: 14px;
+     outline: 0;
+     color: #313131;
+     text-decoration: none;
+   }
+
+   #mynavbar_menu a:hover {
+     color: rosybrown !important;
+   }
+
+   /** 头部 */
+   #myheader {
+     background-color: #2175bc !important;
+     margin-top: 70px;
+     position: relative;
+     width: 100%;
+     height: 300px;
+   }
+
+   #myheader_bg {
+     width: 100%;
+     height: 300px;
+     background-position: center;
+     background-size: cover;
+     -webkit-filter: blur(3px);
+     -moz-filter: blur(3px);
+     filter: blur(3px);
+     position: absolute;
+   }
+
+   #myheader_cover {
+     position: relative;
+     margin-top: 70px;
+     width: 100%;
+     height: 300px;
+     background-color: rgba(0, 0, 0, .5);
+     box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+   }
+
+   #mypost_title {
+     position: relative;
+     top: 105pt;
+     margin: 0 auto;
+     padding: 30px 25px 20px;
+     max-width: 700px;
+     color: white;
+     transition: 0.5s;
+     opacity: 0;
+   }
+
+   #mypost_title_e {
+     margin: 0;
+     padding: 5px 0 15px;
+   }
+
+   #mypost_title_e a {
+     border: 1px solid #6fa3ef;
+     border-radius: 15px;
+     background: #6fa3ef;
+     color: #fff;
+     display: inline-block;
+     margin: 4px 8px 0 0;
+     padding: 0 15px;
+     letter-spacing: 0;
+     font-weight: 600;
+     font-size: 13px;
+     outline: 0;
+     text-decoration: none;
+     transition: 0.5s;
+   }
+
+   #mypost_title_e a:before {
+     content: "# "
+   }
+
+   #mypost_title_e a:hover {
+     background-color: white;
+     border: 1px solid white;
+     color: black;
+   }
+
+   #mypost_title_f a {
+     color: white;
+   }
+
+   #mypost_title_f a:hover {
+     text-decoration: none;
+   }
+
+   /** 右侧导航 */
+   #right_meun {
+     /* opacity: 0; */
+     /* position: fixed; */
+     /* z-index: 999; */
+     /* top: 70px; */
+     /* left: 0%; */
+     display: inline-block;
+     text-align: left;
+     border-left: 1px solid #5d5d5d;
+     font-size: 12px;
+     transition: ease-in-out opacity 0.1s;
+   }
+
+   #right_meun li {
+     list-style: none !important;
+   }
+
+   #right_meun a {
+     display: inline-table;
+     /* margin-left: 5px; */
+     white-space: nowrap;
+     text-decoration: none;
+     color: #e5e5e5;
+     outline: 0;
+   }
+
+   #right_meun a:hover {
+     color: rosybrown;
+   }
+
+   #right_meun>div {
+     position: relative;
+   }
+
+   #right_meun>div::before {
+     position: absolute;
+     top: 35%;
+     left: -4px;
+     display: inline-block;
+     width: 7px;
+     height: 7px;
+     content: '';
+     border-radius: 50%;
+     background-color: rosybrown;
+   }
+
+   /* 底部导航 */
+   #post-bottom-bar {
+     position: fixed;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     z-index: 2;
+     height: 3pc;
+     border-top: 1px solid #e0e0e0;
+     background-color: #fff;
+     margin: 0;
+     padding: 0;
+     transition: 0.4s ease-in-out;
+   }
+
+   #post-bottom-bar a {
+     text-decoration: none !important;
+   }
+
+   .post-bottom-bar .bottom-bar-inner {
+     margin: 0 auto;
+     padding: 0 10px;
+     max-width: 900px;
+   }
+
+   .bottom-bar-items {
+     margin: 0 0 0 10px;
+     color: #313131;
+     font-size: 14px !important;
+     line-height: 3pc;
+     float: left;
+   }
+
+
+   .post-bottom-bar {
+     margin: 0 0 0 10px;
+     color: #313131;
+     font-size: 14px;
+     line-height: 3pc;
+   }
+
+  .post-bottom-bar .social-share .bottom-bar-item img {
+   width: 20px;
+   object-fit: contain;
+  }
+
+   .post-bottom-bar .social-share .bottom-bar-item {
+    display: inline-flex;
+   }
+
+   .post-bottom-bar .bottom-bar-item.bottom-bar-facebook a {
+     /* background-color: #4267b2; */
+     /* color: #fff; */
+   }
+
+   .post-bottom-bar .social-share .bottom-bar-item a {
+     padding: 2px 10px;
+     border-radius: 15px;
+   }
+
+   .post-bottom-bar .bottom-bar-item a {
+     margin: 0;
+     padding: 9pt;
+     border: 0;
+     background: 0 0;
+     color: #313131;
+     font-size: 14px;
+     line-height: 3pc;
+     cursor: pointer;
+   }
+
+   .post-bottom-bar .bottom-bar-item.bottom-bar-twitter a {
+
+   }
+
+   .post-bottom-bar .bottom-bar-item.bottom-bar-qrcode a {
+
+   }
+
+   .bottom-bar-item a:hover {
+     color: rosybrown;
+   }
+
+
+   /** MarkDown样式调整 */
+   .cnblogs-markdown .hljs {
+     font-size: 16px !important;
+     line-height: 2 !important;
+     padding: 15px !important;
+   }
+
+   .cnblogs-markdown code {
+     background: rgb(238, 240, 244) none !important;
+     border: 0px !important;
+     color: rgb(73, 59, 92) !important;
+     font-size: 16px !important;
+   }
+
+   .cnblogs-markdown h2 {
+     font-weight: 500;
+     margin: 20px 0;
+   }
+
+   .cnblogs-markdown h2:before {
+     content: "#";
+     color: rosybrown;
+     position: relative;
+     top: 0;
+     left: -12px;
+   }
+
+   #cnblogs_post_body h2 {
+     font-weight: 500;
+     margin: 20px 0;
+   }
+
+   #cnblogs_post_body h3 {
+     font-size: 16px;
+     font-weight: bold;
+     line-height: 1.5;
+     margin: 10px 0;
+   }
+
+   .cnblogs-markdown h3:before {
+     content: "##";
+     color: #2175bc;
+     position: relative;
+     top: 0;
+     left: -8px;
+   }
+
+   .postBody blockquote,
+   .postCon blockquote {
+     background-image: none;
+     border-left: 5px solid #DDDFE4;
+     background-color: #EEF0F4;
+     width: 100%;
+     padding:6px 6px 6px 20px;
+   }
+
+   blockquote {
+     border: 0;
+   }
+
+   /* code加上行数 */
+   .cnblogs-markdown .syntaxhighlighter table td.code {
+     width: 95% !important;
+   }
+
+   .cnblogs-markdown .syntaxhighlighter code {
+     font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+     padding: 0 !important;
+     border-radius: 0 !important;
+     background-color: transparent !important;
+   }
+
+   .cnblogs-markdown .syntaxhighlighter code:before,
+   .cnblogs-markdown .syntaxhighlighter code:before {
+     letter-spacing: -0.5em;
+   }
+
+   .cnblogs-markdown em {
+     font-style: italic
+   }
+
+
+   /** 更改浏览器滚动条和选中字体背景颜色 */
+   ::selection {
+     background-color: rosybrown;
+     color: #fff;
+   }
+
+   ::-webkit-scrollbar {
+     width: 6px;
+     height: 6px;
+   }
+
+   ::-webkit-scrollbar-thumb {
+     min-height: 28px;
+     background-color: #c2c2c2;
+     background-clip: padding-box;
+   }
+
+   ::-webkit-scrollbar-track-piece {
+     background-color: #fff;
+   }
+
+   *,
+   :after,
+   :before {
+     box-sizing: border-box;
+   }
+
+
+   /** 首页文章条显示优化 */
+   .day {
+     border-radius: 10px;
+     box-shadow: 0 0 20px 2px rgba(0, 0, 0, .1);
+     margin-top: 40px;
+     transition: 0.3s;
+   }
+
+   .day:hover {
+     box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+   }
+
+   .dayTitle {
+     display: none;
+   }
+
+
+   /** 优化评论区样式 */
+   .feedbackItem {
+     background-color: ghostwhite;
+     border-radius: 10px;
+     padding: 20px;
+     margin-top: 20px;
+     border: 0px;
+   }
+   
+   .comment_textarea {
+     padding: 15px;
+     border-radius: 10px;
+     outline: 0;
+     resize: none;
+     overflow: hidden;
+   }
+
+   div .commentform textarea {
+     width: 100%;
+     max-width: 100%;
+   }
+
+   @media  screen and (max-width: 767px){
+      .post {
+        padding:10px;
+      }
+      #comment_form{
+        padding: 0px;
+      }
+      #blog-comments-placeholder,
+      #divRefreshComments,
+      .commentform,
+      #AjaxHolder_UpdatePanel1{
+        padding: 0px;
+
+      }
+      #post_detail {
+        box-shadow: 0 0 0 !important
+
+      }
+   }
+
+
+
+   .comment_btn {
+     border: 1px solid #f7f7f7;
+     border-radius: 30px;
+     background-color: #f7f7f7;
+     font-size: 13px;
+     cursor: pointer;
+     height: 32px;
+     padding: 0 20px;
+     bottom: 55px;
+     width: auto;
+   }
+
+   .comment_btn:hover {
+     border: 1px solid rosybrown;
+     background-color: white;
+     color: rosybrown;
+     transition-duration: .4s;
+   }
+
+   .feedback_area_title {
+     display: none;
+   }
+
+   #commentform_title {
+     display: none;
+   }
+
+   .commentbox_title {
+     /* display: none; */
+   }
+
+   .commentbox_main {
+     margin-top: 20px;
+   }
+
+
+
+
+   /* riwang */
+
+   .shadow {
+     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
+     -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
+     -moz-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
+     -o-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
+   }
+
+   #home {
+     overflow: hidden;
+   }
+
+   div.commentform input.author,
+   div.commentform input.email,
+   div.commentform input.url {
+     background-image: url(https://images.cnblogs.com/cnblogs_com/riwang/1656154/o_200227123122%E5%8F%A3%E7%BD%A9.png)
+   }
+
+   div.commentform input.author {
+     background-position: 3px 3px;
+     background-size: 20px;
+     max-width: 100%;
+   }
+
+   #tip_comment,
+   #digg_tips {
+     color: rosybrown !important
+   }
+
+   .bottom-bar-facebook span {
+     color: rosybrown !important
+   }
+
+
+   /* 目录导航 */
+   .guide-list li {
+     border-bottom: 1px solid #5d5d5d;
+     /* margin-bottom: 18px; */
+   }
+
+   .guide-list a {
+     margin-left: 5px;
+   }
+
+   .guide-list-h1 li {
+     margin-left: 0px;
+     font-size: 1.5em;
+     font-weight: 400;
+   }
+
+   .guide-list-h2 li {
+     margin-left: 12px;
+     font-size: 1.4em;
+     font-weight: 300;
+
+   }
+
+   .guide-list-h3 li {
+     margin-left: 24px;
+     font-size: 1.3em;
+     font-weight: 200;
+
+   }
+
+   .guide-list-h4 li {
+     margin-left: 36px;
+     font-size: 1.2em;
+     font-weight: 100;
+
+   }
+
+   .guide-list-h5 li {
+     margin-left: 48px;
+     font-size: 1.1em;
+     font-weight: 100;
+
+   }
+
+   .guide-list-h6 li {
+     margin-left: 60px;
+     font-size: 1em;
+     font-weight: 100;
+
+   }
+
+
+   .content-guide {
+     z-index: 100000;
+     background-color: #5d5d5d;
+     position: fixed;
+     padding: 10px;
+     opacity: 0.99;
+     left: -400px;
+     top: 70px;
+     bottom:50px;
+     width: 400px;
+     overflow: auto;
+     transition: all 0.6s;
+     -moz-transition: all 0.6s;
+     -webkit-transition: all 0.6s;
+     -o-transition: all 0.6s;
+     color: #e5e5e5;
+   }
+
+   .content-guide-head {
+     text-align: center;
+     font-size: 20px;
+     font-weight: 500;
+     border-bottom: 2px solid #2298d1;
+     color: #e5e5e5;
+     padding-bottom: 10px;
+   }
+
+   .content-guide-head>a {
+     color: #e5e5e5;
+   }
+
+   .head-close {
+     float: right;
+     font-size: 28px;
+   }
+
+   #menuBtn {
+     background-image: url('https://images.cnblogs.com/cnblogs_com/riwang/1656154/o_200228062621%E7%9B%AE%E5%BD%95%20(1).png');
+     background-size: 50px;
+     position: fixed;
+     left: 100px;
+     bottom: 100px;
+     width: 50px;
+     height: 50px;
+     cursor: pointer;
+   }
+
+
+
+   #post_detail{
+     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+
+   }
+
+
+
+   /*sideBar博客侧边栏容器*/
+   #sideBar {
+     width: 250px;
+     box-sizing: border-box;
+     margin-left: 30px;
+     padding: 0;
+   }
+
+   .newsItem,
+   .catListComment,
+   .catListEssay,
+   .catListView,
+   .catListFeedback,
+   #blog-calendar,
+   #sidebar_postcategory,
+   #sidebar_postcategory,
+   #sidebar_postarchive,
+   #sidebar_search {
+     /*侧边栏每一模块添加圆角和阴影*/
+     border-radius: 10px;
+     /* box-shadow: 1px 2px 3px #A7A8AD; */
+     background-color: #fff;
+   }
+
+   #sideBarMain h3,
+   .newsItem h3 {
+     /*侧边栏每个模块的标题部分*/
+     font-size: 1.2em;
+     height: 50px;
+     line-height: 50px;
+     text-indent: 0.5em;
+     background: url(https://images.cnblogs.com/cnblogs_com/riwang/1656154/o_200228084450%E5%8F%B6%E5%AD%902.png) no-repeat left center #fff;
+     /* padding: 0 0 0 50px; */
+     text-align: center;
+     margin-bottom: 0;
+     border: 1px solid #55895B;
+     border-left-width: 5px;
+     background-size: 70px;
+     border-radius: 10px;
+     border-right-width: 5px;
+   }
+
+   /*侧边栏列表样式*/
+   #sideBarMain ul {
+     background-color: #fff;
+     padding: 15px 20px;
+     border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+   }
+
+   #sideBarMain li {
+     line-height: 40px;
+     border-bottom: 1px solid #ddd;
+     font-size: 14px;
+   }
+
+
+
+   #sideBarMain ul a {
+     color: #6a6352;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 12px;
+     font-weight: normal;
+     line-height: 20px;
+   }
+
+
+   /* 日历 */
+   #blog-calendar,
+   #calendar {
+     width: 100%;
+   }
+
+   #blog-calendar td {
+     padding: 5px 3px;
+     font-size: 14px;
+   }
+
+   #blog-calendar td a {
+     font-weight: bold;
+     color: #59a020;
+   }
+
+   #blog-calendar table a:hover {
+     color: #59a020;
+     text-decoration: underline;
+     background: transparent;
+   }
+
+   #blog-calendar table u {
+     text-decoration: none;
+   }
+
+   /*日历结束*/
+
+
+/*侧边搜索框*/
+.mySearch {
+    padding-bottom: 10px;
+}
+
+.mySearch > div {
+    padding-top: 10px
+}
+
+.mySearch #q {
+    height: 40px;
+    width: 150px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.mySearch #btnZzk {
+    height: 42px;
+    width: 90px;
+    background: #fd6d0dd1;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.div_my_zzk {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/*搜索框结束*/
