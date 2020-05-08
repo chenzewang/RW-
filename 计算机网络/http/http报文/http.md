@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-26 12:37:14
- * @LastEditTime: 2020-04-08 10:37:08
+ * @LastEditTime: 2020-04-21 18:44:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RW 笔记\http\http.md
@@ -133,11 +133,9 @@ HTTP 响应码响应码由三位十进制数字组成，它们出现在由 HTTP 
 
 ### 请求头
 
-从 host 到 cookie
-
 ```http
 GET / HTTP/1.1
-Host: www.enjoytoday.cn
+Host: www.enjoytoday.cn  //从这里开始
 Connection: keep-alive
 Upgrade-Insecure-Requests: 1
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36
@@ -145,7 +143,7 @@ Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.
 Referer: http://www.enjoytoday.cn/posts/326
 Accept-Encoding: gzip, deflate, sdch
 Accept-Language: zh-CN,zh;q=0.8
-Cookie: bdshare_firstime=1466032270994; UM_distinctid=15c4ef2ac4e2e4-0d13269271b947-1b2a120b-1fa400-15c4ef2ac4f7b5; un=aGZjYWk=;
+Cookie: bdshare_firstime=1466032270994; UM_distinctid=15c4ef2ac4e2e4-0d13269271b947-1b2a120b-1fa400-15c4ef2ac4f7b5; un=aGZjYWk=;  //到这里结束
 
 username=hfcai&sex=man
 ```

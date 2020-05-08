@@ -1,25 +1,25 @@
-function merge2Array5(origin) {
-  const result = [];
-  const tagObj = {};
-  for (const i of origin) {
-    if (!tagObj[i]) {
-      result.push(i);
-      tagObj[i] = 1;
-    }
-  }
-  return result;
-}
-var params = [
-  1,
-  "1",
-  2,
-  2,
-  {
-    a: 1
-  },
-  {
-    a: 1
-  }
-]
+/*
+ * @Author: your name
+ * @Date: 2020-03-30 21:00:20
+ * @LastEditTime: 2020-04-27 16:07:28
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \RW 笔记\test\test.js
+ */
 
-console.log(merge2Array5(params));
+function func(params) {
+  console.log(params);
+
+}
+
+function then(func) {
+  //做一些操作
+
+  //操作完了，执行回调函数
+  var db = "xxxx"
+
+  func(db)
+
+}
+
+then(func)
