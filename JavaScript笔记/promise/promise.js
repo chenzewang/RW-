@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-09 12:28:19
- * @LastEditTime: 2020-03-31 08:31:10
+ * @LastEditTime: 2020-07-06 12:03:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RW 笔记\JavaScript笔记\promise\promise.js
@@ -90,14 +90,16 @@ Promise.prototype.then = function (onfulfilled, onrejected) {
 
 
 var promise = new Promise((resolve, reject) => {
-
   setTimeout(() => {
     console.log('start');
     resolve('this is res')
   }, 1000)
-
+  resolve('this is res')
 
 }).then((res) => {
   console.log(res);
   console.log('in then')
+  return res
+}).then(res => {
+  console.log("then2");
 })

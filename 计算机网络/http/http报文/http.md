@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-26 12:37:14
- * @LastEditTime: 2020-04-21 18:44:47
+ * @LastEditTime: 2020-07-03 18:58:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RW 笔记\http\http.md
@@ -10,15 +10,15 @@
 
 ![](https://user-gold-cdn.xitu.io/2020/3/23/17104ea1fdee5669?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
-- [http 报文结构](#http报文结构)
+- [http 报文结构](#http-报文结构)
   - [报文首部](#报文首部)
     - [起始行](#起始行)
       - [请求报文的起始行:](#请求报文的起始行)
         - [方法(method)](#方法method)
         - [request-URL](#request-url)
-        - [version(http 协议版本)](#versionhttp协议版本)
+        - [version(http 协议版本)](#versionhttp-协议版本)
       - [响应报文的起始行](#响应报文的起始行)
-        - [HTTP 响应码](#http响应码)
+        - [HTTP 响应码](#http-响应码)
     - [请求头](#请求头)
       - [通用首部](#通用首部)
       - [请求首部](#请求首部)
@@ -27,11 +27,11 @@
       - [拓展首部](#拓展首部)
   - [空行](#空行)
   - [报文主体(body)](#报文主体body)
-- [http 请求过程](#http请求过程)
-  - [1.建立 TCP 连接](#1建立tcp连接)
+- [http 请求过程](#http-请求过程)
+  - [1.建立 TCP 连接](#1建立-tcp-连接)
   - [2.浏览器向服务器发送请求命令](#2浏览器向服务器发送请求命令)
-  - [3.web 服务器应答](#3web服务器应答)
-  - [4.Web 服务器关闭 TCP 连接](#4web服务器关闭tcp连接)
+  - [3.web 服务器应答](#3web-服务器应答)
+  - [4.Web 服务器关闭 TCP 连接](#4web-服务器关闭-tcp-连接)
 
 <!-- /TOC -->
 
@@ -85,6 +85,9 @@ username=hfcai&sex=man
 ```http
 GET /index.html HTTP/1.1
 ```
+
+> url 划分：
+> `protocol:// hostname[:port] / path / [;parameters][?query]#fragment`
 
 ![](https://img-blog.csdnimg.cn/20191003133346229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FkYV9sYWtl,size_16,color_FFFFFF,t_70)
 
@@ -232,7 +235,7 @@ HTTP/1.1 200 OK
 
 1. 通过 dns 找到 ip
 2. 与主机进行三次握手建立 tcp 链接
-   > 这里复习一下计算机网络的知识
+   > 这里复习一下
    > ![](https://img-blog.csdn.net/20160717204340046) > ![](https://img-blog.csdn.net/20160717210625774)
 
 ## 2.浏览器向服务器发送请求命令

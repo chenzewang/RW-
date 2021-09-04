@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-26 13:47:39
- * @LastEditTime: 2020-03-19 16:18:43
+ * @LastEditTime: 2020-07-03 12:27:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RW 笔记\http\https\https.md
@@ -14,15 +14,20 @@
 
 <!-- TOC -->
 
-- [HTTPS 协议](#https-%e5%8d%8f%e8%ae%ae)
-- [https 具体加密过程](#https-%e5%85%b7%e4%bd%93%e5%8a%a0%e5%af%86%e8%bf%87%e7%a8%8b)
-- [证书是什么](#%e8%af%81%e4%b9%a6%e6%98%af%e4%bb%80%e4%b9%88)
-- [非对称加密的算法](#%e9%9d%9e%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86%e7%9a%84%e7%ae%97%e6%b3%95)
+- [HTTPS 协议](#https-协议)
+- [https 具体加密过程](#https-具体加密过程)
+- [证书是什么](#证书是什么)
+- [非对称加密的算法](#非对称加密的算法)
   - [RSA](#rsa)
-- [对称加密的算法](#%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86%e7%9a%84%e7%ae%97%e6%b3%95)
+- [对称加密的算法](#对称加密的算法)
   - [EDS](#eds)
   - [3DES](#3des)
   - [AES](#aes)
+- [https 缺点](#https-缺点)
+  - [耗时上会比 http 多一些](#耗时上会比-http-多一些)
+  - [早期的 ssl 不支持虚拟主机](#早期的-ssl-不支持虚拟主机)
+  - [怎么解决缺点](#怎么解决缺点)
+    - [keep-alive](#keep-alive)
 
 <!-- /TOC -->
 
@@ -72,3 +77,23 @@ HTTPS 协议可以理解为 HTTP 协议的升级，就是在 HTTP 的基础上�
 ## 3DES
 
 ## AES
+
+# https 缺点
+
+## 耗时上会比 http 多一些
+
+额外的握手以及计算任务（生成秘钥、加密解密等计算，包括客户端和服务端）会产生更多的耗时。不过再次访问同一个 https 的 domain，浏览器将重用该连接并缓存 SSL 会话，以允许快速恢复通信。
+
+## 早期的 ssl 不支持虚拟主机
+
+即从同一个 服务器 ip 提供多个域名。这方面的协议在 2004 年有了支持，但是老的浏览器如 ie6 ie7 会有这些问题
+
+## 怎么解决缺点
+
+### keep-alive
+
+- 尽可能在 HTTPS 连接上启用 Keep-Alive。 为页面中的每个对象重新建立 SSL 会话会降低性能。 但也请注意启用 Keep-Alive 可以对您的 Web 服务器扩展产生什么影响。 在高流量站点上，它将是站不住脚的（因此请参阅＃2）。
+
+* Make sure you understand how your site is being cached. It makes a huge difference in perceived performance.
+
+- If you can afford to use a tiered architecture with a dedicated SSL terminator in front of your web server tier, you will enjoy better horizontal scaling. It needn't even be hardware - a dedicated software SSL terminator will still give you more cache hits and faster session resumes, and make it easier to scale your web tier.

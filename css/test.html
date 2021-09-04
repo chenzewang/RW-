@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-20 14:53:27
- * @LastEditTime: 2020-03-20 14:54:04
+ * @LastEditTime: 2020-07-07 00:17:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RW 笔记\css\test.html
@@ -9,56 +9,62 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  <div id="star-five">
-    
+  <a href='' onclick="alert('xss')">type</a>
+
+  <div id=" star-five">
+
   </div>
 </body>
+
 </html>
 <style>
-#star-five {
-margin: 50px 0;
-position: relative;
-display: block;
-color: red;
-width: 0px;
-height: 0px;
-border-right: 100px solid transparent;
-border-bottom: 70px solid red;
-border-left: 100px solid transparent;
-transform: rotate(35deg);
-}
-#star-five:before {
-border-bottom: 80px solid red;
-border-left: 30px solid transparent;
-border-right: 30px solid transparent;
-position: absolute;
-height: 0;
-width: 0;
-top: -45px;
-left: -65px;
-display: block;
-content: '';
-transform: rotate(-35deg);
-}
-#star-five:after {
-position: absolute;
-display: block;
-color: red;
-top: 3px;
-left: -105px;
-width: 0px;
-height: 0px;
-border-right: 100px solid transparent;
-border-bottom: 70px solid red;
-border-left: 100px solid transparent;
-transform: rotate(-70deg);
-content: '';
-}
+  #star-five {
+    margin: 50px 0;
+    position: relative;
+    display: block;
+    color: red;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid red;
+    border-left: 100px solid transparent;
+    transform: rotate(35deg);
+  }
 
+  #star-five:before {
+    border-bottom: 80px solid red;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -45px;
+    left: -65px;
+    display: block;
+    content: '';
+    transform: rotate(-35deg);
+  }
+
+  #star-five:after {
+    position: absolute;
+    display: block;
+    color: red;
+    top: 3px;
+    left: -105px;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid red;
+    border-left: 100px solid transparent;
+    transform: rotate(-70deg);
+    content: '';
+  }
 </style>

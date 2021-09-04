@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-19 19:44:30
- * @LastEditTime: 2020-03-23 23:32:24
+ * @LastEditTime: 2020-07-07 00:53:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \RW 笔记\web安全\xss\例子\server.js
@@ -34,7 +34,7 @@ http.createServer((req, res) => {
     if (url == '/') {
       res.writeHead(200, {
         'Content-Type': 'text/html',
-        "set-cookie": "testXss=123456"
+        "set-cookie": "token=123456"
         // 'Cache-Control': 'no-store'
       });
       res.end(html);
